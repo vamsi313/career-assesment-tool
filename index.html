@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareerPath Pro - Student Career Assessment Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h2>CareerPath Pro</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#assessments" class="nav-link">Assessments</a></li>
+                <li><a href="#careers" class="nav-link">Career Explorer</a></li>
+                <li><a href="#resources" class="nav-link">Resources</a></li>
+                <li><a href="#admin" class="nav-link admin-link">Admin Panel</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Discover Your Perfect Career Path</h1>
+                <p>Comprehensive career assessments designed for B.Tech, M.Tech, MBA, BBA students and professionals</p>
+                <div class="cta-buttons">
+                    <button class="btn primary" onclick="startAssessment()">Start Assessment</button>
+                    <button class="btn secondary" onclick="scrollToSection('careers')">Explore Careers</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-cards">
+                    <div class="card">💼 Business</div>
+                    <div class="card">💻 Technology</div>
+                    <div class="card">🔬 Research</div>
+                    <div class="card">🎨 Creative</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Types -->
+    <section id="assessments" class="assessments">
+        <div class="container">
+            <h2>Choose Your Assessment Type</h2>
+            <div class="assessment-grid">
+                <div class="assessment-card" onclick="openAssessment('personality')">
+                    <div class="card-icon">🧠</div>
+                    <h3>Personality Assessment</h3>
+                    <p>Discover your personality traits and how they align with different career paths</p>
+                    <div class="card-stats">
+                        <span>25 Questions</span>
+                        <span>10 mins</span>
+                    </div>
+                </div>
+                <div class="assessment-card" onclick="openAssessment('skills')">
+                    <div class="card-icon">⚡</div>
+                    <h3>Skills Evaluation</h3>
+                    <p>Assess your technical and soft skills across various domains</p>
+                    <div class="card-stats">
+                        <span>30 Questions</span>
+                        <span>15 mins</span>
+                    </div>
+                </div>
+                <div class="assessment-card" onclick="openAssessment('interest')">
+                    <div class="card-icon">❤️</div>
+                    <h3>Interest Profiler</h3>
+                    <p>Explore your interests and passions to find matching career fields</p>
+                    <div class="card-stats">
+                        <span>20 Questions</span>
+                        <span>8 mins</span>
+                    </div>
+                </div>
+                <div class="assessment-card" onclick="openAssessment('comprehensive')">
+                    <div class="card-icon">🎯</div>
+                    <h3>Comprehensive Test</h3>
+                    <p>Complete career assessment combining all three evaluation types</p>
+                    <div class="card-stats">
+                        <span>75 Questions</span>
+                        <span>35 mins</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Explorer -->
+    <section id="careers" class="careers">
+        <div class="container">
+            <h2>Career Explorer</h2>
+            <div class="filter-tabs">
+                <button class="tab-btn active" onclick="filterCareers('all')">All Careers</button>
+                <button class="tab-btn" onclick="filterCareers('technology')">Technology</button>
+                <button class="tab-btn" onclick="filterCareers('business')">Business</button>
+                <button class="tab-btn" onclick="filterCareers('engineering')">Engineering</button>
+                <button class="tab-btn" onclick="filterCareers('management')">Management</button>
+                <button class="tab-btn" onclick="filterCareers('research')">Research</button>
+            </div>
+            <div class="careers-grid" id="careersGrid">
+                <!-- Career cards will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section id="resources" class="resources">
+        <div class="container">
+            <h2>Career Resources</h2>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h3>📚 Study Guides</h3>
+                    <p>Comprehensive guides for different academic paths and career preparation</p>
+                </div>
+                <div class="resource-card">
+                    <h3>💼 Interview Prep</h3>
+                    <p>Tips and strategies for acing interviews in your chosen field</p>
+                </div>
+                <div class="resource-card">
+                    <h3>🎓 Skill Development</h3>
+                    <p>Recommended courses and certifications for career advancement</p>
+                </div>
+                <div class="resource-card">
+                    <h3>📊 Salary Insights</h3>
+                    <p>Industry salary data and compensation trends across different roles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Panel -->
+    <section id="admin" class="admin-panel" style="display: none;">
+        <div class="container">
+            <h2>Admin Panel</h2>
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" onclick="showAdminSection('manage-assessments')">Manage Assessments</button>
+                <button class="admin-tab-btn" onclick="showAdminSection('career-data')">Career Data</button>
+                <button class="admin-tab-btn" onclick="showAdminSection('analytics')">Analytics</button>
+            </div>
+            
+            <div id="manage-assessments" class="admin-section">
+                <h3>Assessment Management</h3>
+                <div class="admin-actions">
+                    <button class="btn primary" onclick="addNewQuestion()">Add Question</button>
+                    <button class="btn secondary" onclick="updateAssessments()">Update Tests</button>
+                </div>
+                <div class="questions-list" id="questionsList">
+                    <!-- Questions will be populated here -->
+                </div>
+            </div>
+            
+            <div id="career-data" class="admin-section" style="display: none;">
+                <h3>Career Database</h3>
+                <div class="admin-actions">
+                    <button class="btn primary" onclick="addCareer()">Add Career</button>
+                    <button class="btn secondary" onclick="exportData()">Export Data</button>
+                </div>
+            </div>
+            
+            <div id="analytics" class="admin-section" style="display: none;">
+                <h3>Usage Analytics</h3>
+                <div class="analytics-grid">
+                    <div class="stat-card">
+                        <h4>Total Assessments</h4>
+                        <p id="totalAssessments">1,247</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Active Users</h4>
+                        <p id="activeUsers">892</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Completion Rate</h4>
+                        <p id="completionRate">87%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Modal -->
+    <div id="assessmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Career Assessment</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+            <div class="question-counter">
+                <span id="currentQuestion">1</span> of <span id="totalQuestions">25</span>
+            </div>
+            <div class="modal-body">
+                <div class="question-container">
+                    <h4 id="questionText">Loading question...</h4>
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Options will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" id="prevBtn" onclick="previousQuestion()">Previous</button>
+                <button class="btn primary" id="nextBtn" onclick="nextQuestion()">Next</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content results-modal">
+            <div class="modal-header">
+                <h3>Your Career Assessment Results</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="results-container">
+                    <div class="personality-results">
+                        <h4>Your Personality Profile</h4>
+                        <div id="personalityChart"></div>
+                    </div>
+                    <div class="recommended-careers">
+                        <h4>Recommended Career Paths</h4>
+                        <div id="careerRecommendations"></div>
+                    </div>
+                    <div class="skills-breakdown">
+                        <h4>Skills Assessment</h4>
+                        <div id="skillsChart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn secondary" onclick="downloadResults()">Download PDF</button>
+                <button class="btn primary" onclick="exploreRecommendations()">Explore Careers</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 CareerPath Pro. Empowering students to discover their ideal career paths.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
